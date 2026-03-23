@@ -1,5 +1,8 @@
 import React from 'react'
 import About from './About';
+import {animate, motion} from "motion/react";
+
+
 
 const Packages = () => {
 
@@ -83,10 +86,19 @@ const Packages = () => {
 
   return (
     <div className='section'>
-        <h1>Our Packages</h1>
+        <motion.h1 initial={{opacity: 0, x: -100 }}
+                  whileInView={{opacity: 1, x:0 }}
+                  transition={{ duration: 0.8, ease: "easeInOut" }}
+                  viewport={{ once: true }}
+          className='package-title'>Our Packages</motion.h1>
         <div className='package-grid'>
             {Ourpackages.map((packagee) => (
-                <div className='card' key={packagee.id}>
+                <motion.div initial={{ rotateY: -90, opacity: 0 }}
+                  whileInView={{ rotateY: 0, opacity: 1 }}
+                  transition={{ duration: 0.8, ease: "easeIn" }}
+                  viewport={{ once: false }}
+                  layout
+                  className='card' key={packagee.id}>
                     <h1>{packagee.title}</h1>
                     <h3>{packagee.tagline}</h3>
                     <p>{packagee.description}</p>
@@ -94,7 +106,7 @@ const Packages = () => {
                         <li>{packagee.includes}</li>
                     </ul>
                     <h3>{packagee.perfectFor}</h3>
-                </div>
+                </motion.div>
             ))}
         </div>
         <About />

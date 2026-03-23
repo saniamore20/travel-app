@@ -47,6 +47,7 @@ body {
 
 /*  HERO SECTION */
 .hero {
+  
   background: linear-gradient(135deg, #FF9A8B, #FF6A88, #B784F7);
   color: #FFFFFF;
   text-align: center;
@@ -54,9 +55,29 @@ body {
   border-radius: 0 0 40px 40px;
 }
 
+.content {
+  display: flex;
+  justify-content: space-between;
+  perspective: 1000px;
+}
+
+.inside {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
 .sub{
-  margin-top: 20px;
+  margin-top: 10px;
   padding-bottom: 29px;
+  padding-left: 5px;
+  text-align: left;
+  font-size: 25px;
+}
+
+.title {
+  font-size: 80px;
 }
 
 /* 🧾 SECTION */
@@ -169,34 +190,46 @@ body {
   gap: 20px;
 }
 
-.package-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-}
+
 
 h2{
   color: #FF6A88;
 }
 
-/* 📦 CARDS */
+
+/* Packages */
+
+.package-title{
+  background-color: #FF6A88;
+  color: #ffffff;
+  border-radius: 0 50px 50px 0; 
+  font-size: 50px;
+  padding: 16px 80px 16px 20px;
+  font-weight: 10000;
+  display: inline-block;
+}
+
+
 .card {
   background-color: #FFFFFF;
   border-radius: 20px;
   padding: 20px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-  transition: 0.3s;
+  /* transition: 0.3s; */
   border: #FF6A88 2px solid;
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  /* transform: translateY(-5px) */
   background: #ff6a883b;
   border: #FF6A88 2px solid;
 }
 
-/* Packages */
-
+.package-grid {
+  display: grid;
+  /* grid-template-columns: repeat(3, 1fr); */
+  gap: 30px;
+}
 
 /*About us*/
 
