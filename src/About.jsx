@@ -1,10 +1,19 @@
 import React from 'react'
 
+import { useScroll, motion } from 'framer-motion';
+
+
 const About = () => {
+
+    const { scrollYProgress } = useScroll();
+
+
   return (
     <div>
-        {/* <div className='section'>
-            <div className='about-left'>
+        <div className='section'>
+            <motion.div className='about-left'>
+
+                <h1 className='about-right'>About <span className='color-white'>Us</span></h1>
                 
                 <h2 className='about-left'>We do not just plan trips — we create stories worth remembering.</h2>
                 <h3 className='about-left'>We are a Gen Z travel collective built for explorers who crave more than just destinations.
@@ -26,13 +35,13 @@ const About = () => {
 
                         <li>💖 Focus on moments, not just locations</li>
                     </ul>
-                </div>
-                <h1 className='about-right'>About <span className='color-white'>Us</span></h1>
+                </motion.div>
+                
                     
             
         </div>
-    </div> */}
     </div>
+    
   )
 }
 

@@ -19,8 +19,8 @@ const Hero = () => {
                Travel with your squad, and we willl bring a professional photographer
                 to capture every aesthetic second.</motion.p>
               </div>
-              <motion.img  initial={{ rotateY: -90, opacity: 0 }}
-                  whileInView={{ rotateY: 0, opacity: 1 }}
+              <motion.img  initial={{ rotateY: -90, opacity: 0}}
+                  whileInView={{ rotateY: 0, opacity: 1}}
                   transition={{ duration: 0.8, ease: "easeInOut" }}
                   viewport={{ once: false }}  src={bag} alt='travel' style={{ width: "300px"}}/>
             </div>

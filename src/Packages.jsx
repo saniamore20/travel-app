@@ -1,117 +1,115 @@
-import React from 'react'
-import About from './About';
-import {animate, motion} from "motion/react";
+import React from "react";
+import About from "./About";
+import { motion } from "motion/react";
 
+// ✅ images
+import beach from "./assets/beach.jpg";
+import mountain from "./assets/mountain.jpg";
+import city from "./assets/city.jpg";
+import party from "./assets/party.jpg";
+import dream from "./assets/dream.jpg";
 
+/* 🎬 CARD ANIMATION (same as demo) */
+const cardVariants = {
+  offscreen: {
+    y: 200,
+    opacity: 0
+  },
+  onscreen: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: "spring",
+      bounce: 0.4,
+      duration: 0.8
+    }
+  }
+};
 
 const Packages = () => {
 
-    const Ourpackages = [
-  {
-    id: 1,
-    title: "Beach Vibes Escape",
-    tagline: "Sunsets, waves & golden hour magic.",
-    description:
-      "Escape to dreamy beaches where every moment feels like a movie. From sunset photoshoots to late-night beach parties, this trip is all about vibes and visuals.",
-    includes: [
-      "Personal photographer",
-      "Sunset beach photoshoot",
-      "Instagram reels + drone shots",
-      "Beach hopping",
-      "Night parties & music vibes"
-    ],
-    perfectFor: "Friends, content creators, chill + party lovers"
-  },
-  {
-    id: 2,
-    title: "Mountain Escape",
-    tagline: "Cozy, calm & aesthetic.",
-    description:
-      "Wake up to misty mountains, sip coffee in aesthetic cafés, and capture cozy moments that feel straight out of Pinterest.",
-    includes: [
-      "Aesthetic mountain photoshoots",
-      "Bonfire nights",
-      "Café hopping",
-      "Cinematic reels",
-      "Nature walks & hidden spots"
-    ],
-    perfectFor: "Soft aesthetic lovers, couples, peaceful vibe seekers"
-  },
-  {
-    id: 3,
-    title: "City Aesthetic Tour",
-    tagline: "Main character energy in every street.",
-    description:
-      "Explore vibrant cities with a stylish twist—street photography, outfit shoots, and iconic locations for your next viral reel.",
-    includes: [
-      "Street style photoshoots",
-      "Outfit-based shoots",
-      "Reel creation",
-      "Iconic + hidden spots",
-      "Café & shopping exploration"
-    ],
-    perfectFor: "Fashion lovers, influencers, urban explorers"
-  },
-  {
-    id: 4,
-    title: "Party Trip Experience",
-    tagline: "No sleep. Just vibes.",
-    description:
-      "For those who want to go all out—music, parties, and unforgettable nights captured in the most aesthetic way.",
-    includes: [
-      "Club & party access",
-      "Nightlife photography",
-      "Party reels",
-      "Group activities",
-      "Chill + after-party hangouts"
-    ],
-    perfectFor: "Friend groups, party lovers"
-  },
-  {
-    id: 5,
-    title: "Custom Dream Trip",
-    tagline: "Your trip, your vibe.",
-    description:
-      "Want something unique? We design your entire trip based on your mood, aesthetic, and budget.",
-    includes: [
-      "Fully personalized itinerary",
-      "Photographer included",
-      "Custom content creation",
-      "Unique experience planning"
-    ],
-    perfectFor: "Anyone who wants a unique experience"
-  }
-];
-
+  const Ourpackages = [
+    {
+      id: 1,
+      title: "Beach Vibes Escape",
+      image: beach,
+      tagline: "Sunsets, waves & golden hour magic.",
+      description: "Escape to dreamy beaches with cinematic vibes.",
+    },
+    {
+      id: 2,
+      title: "Mountain Escape",
+      image: mountain,
+      tagline: "Cozy, calm & aesthetic.",
+      description: "Misty mountains + Pinterest vibes.",
+    },
+    {
+      id: 3,
+      title: "City Aesthetic Tour",
+      image: city,
+      tagline: "Main character energy.",
+      description: "Urban shoots + stylish reels.",
+    },
+    {
+      id: 4,
+      title: "Party Trip",
+      image: party,
+      tagline: "No sleep. Just vibes.",
+      description: "Clubs + nightlife + memories.",
+    },
+    {
+      id: 5,
+      title: "Custom Dream Trip",
+      image: dream,
+      tagline: "Your vibe, your rules.",
+      description: "Fully personalized experience.",
+    }
+  ];
 
   return (
-    <div className='section'>
-        <motion.h1 initial={{opacity: 0, x: -100 }}
-                  whileInView={{opacity: 1, x:0 }}
-                  transition={{ duration: 0.8, ease: "easeInOut" }}
-                  viewport={{ once: true }}
-          className='package-title'>Our Packages</motion.h1>
-        <div className='package-grid'>
-            {Ourpackages.map((packagee) => (
-                <motion.div initial={{ rotateY: -90, opacity: 0 }}
-                  whileInView={{ rotateY: 0, opacity: 1 }}
-                  transition={{ duration: 0.8, ease: "easeIn" }}
-                  viewport={{ once: false }}
-                  layout
-                  className='card' key={packagee.id}>
-                    <h1>{packagee.title}</h1>
-                    <h3>{packagee.tagline}</h3>
-                    <p>{packagee.description}</p>
-                    <ul>
-                        <li>{packagee.includes}</li>
-                    </ul>
-                    <h3>{packagee.perfectFor}</h3>
-                </motion.div>
-            ))}
-        </div>
-        <About />
+    <>
+    <div className="package-title">OUR PACKAGES</div>
+    <div className="scroll-container">
+
+      {Ourpackages.map((pkg, i) => (
+
+        <motion.div
+          key={pkg.id}
+          className="scroll-card-container"
+          initial="offscreen"
+          whileInView="onscreen"
+          viewport={{ amount: 0.5 }}
+        >
+
+          {/* 💫 CARD */}
+          <motion.div className="scroll-card" variants={cardVariants}>
+
+            {/* LEFT TEXT */}
+            <div className="card-text">
+              <h1>{pkg.title}</h1>
+              <h3>{pkg.tagline}</h3>
+              <p>{pkg.description}</p>
+            </div>
+
+            {/* RIGHT IMAGE */}
+            <div className="card-image">
+              <img src={pkg.image} alt={pkg.title} />
+            </div>
+
+          </motion.div>
+
+        </motion.div>
+        
+
+      ))}
+
+      <br></br>
+
+      
     </div>
-  )
-}
+    <About />
+    </>
+  );
+};
 
 export default Packages;
